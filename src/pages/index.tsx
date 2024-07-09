@@ -1,8 +1,8 @@
 export default function Home() {
     const collections = [
         {
-            label: 'Select animation',
-            path: '/select-animation',
+            label: 'Filter Tag UI',
+            path: '/filter-tag',
             img: '/images/select-animation.png',
         },
         {
