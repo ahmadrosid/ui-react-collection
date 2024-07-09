@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>React UI Animation</title>
+</head>
+
+<body class="bg-gray-900 text-white">
+  <div className="relative w-full h-screen bg-gray-900 overflow-hidden">
+    <!-- Background grid -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        opacity: 0.2;
+        background-image: 
+          linear-gradient(to right, #4a5568 1px, transparent 1px),
+          linear-gradient(to bottom, #4a5568 1px, transparent 1px);
+        background-size: 20px 20px;
+      "></div>
+
+    <!-- Gradient overlay -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, rgba(26, 32, 44, 0.4) 0%, rgba(26, 32, 44, 0.8) 70%, rgba(26, 32, 44, 1) 100%);
+      "></div>
+      <div class="relative">
+        <div id="root"></div>
+      </div>
+  </div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
