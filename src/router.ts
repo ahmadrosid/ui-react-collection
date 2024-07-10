@@ -5,9 +5,10 @@ import { components, hooks, utils } from '@generouted/react-router/client'
 
 export type Path =
   | `/`
+  | `/askui`
   | `/chat-ui`
+  | `/filter-tag`
   | `/login`
-  | `/select-animation`
 
 export type Params = {
   

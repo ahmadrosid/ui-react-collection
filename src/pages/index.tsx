@@ -14,12 +14,18 @@ export default function Home() {
             label: 'Login Page',
             path: '/login',
             img: '/images/login.png',
+        },
+        {
+            label: 'Ask UI',
+            path: '/askui',
+            img: '/images/askui.png',
         }
     ];
     return (
         <div className="max-w-6xl mx-auto p-8 relative">
-            <div className="text-center pt-2">
-                <h3 className="text-white text-3xl font-bold mb-6">React UI Collections</h3>
+            <div className="text-center py-4">
+                <h3 className="text-white text-5xl font-bold">UI Experiments</h3>
+                <p className="py-4">Some UI pattern I found online that I liked and wanted to try out.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {collections.map((collection, index) => (
