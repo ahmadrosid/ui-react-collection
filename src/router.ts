@@ -7,6 +7,7 @@ export type Path =
   | `/`
   | `/askui`
   | `/chat-ui`
+  | `/color-picker`
   | `/filter-tag`
   | `/login`
 
