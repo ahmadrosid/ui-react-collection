@@ -24,6 +24,11 @@ export default function Home() {
             label: 'Color Picker',
             path: '/color-picker',
             img: '/images/color-picker.png',
+        },
+        {
+            label: 'Tag Selector',
+            path: '/tag-selector',
+            img: '/images/tag-selector.png',
         }
     ];
     return (
@@ -35,7 +40,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {collections.map((collection, index) => (
                     <div key={index} className="bg-gray-800 rounded-2xl px-4 pt-4 border-2 border-gray-700 shadow-md">
-                        <h3 className="text-white text-xl font-semibold mb-2">{collection.label}</h3>
+                        <h3 className="text-white font-semibold mb-2">{collection.label}</h3>
                         <a href={collection.path} className="py-1 block">
                             <img src={collection.img} alt={collection.label} className="w-full rounded-lg" />
                         </a>

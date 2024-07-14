@@ -10,6 +10,8 @@ export type Path =
   | `/color-picker`
   | `/filter-tag`
   | `/login`
+  | `/tag-selector`
+  | `/timesheet`
 
 export type Params = {
   
