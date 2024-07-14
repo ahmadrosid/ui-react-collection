@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Clock, Globe } from 'lucide-react';
+import { Clock, Globe, ChevronDown } from 'lucide-react';
 
 const WorkSchedule = () => {
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
@@ -50,62 +50,64 @@ const WorkSchedule = () => {
   );
 
   return (
-    <div className="p-6 max-w-4xl mx-auto bg-white rounded-xl shadow-md">
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold text-gray-800">Weekly Work Schedule</h1>
-        <div className="flex items-center">
-          <Globe className="inline-block w-4 h-4 mr-2" />
-          <select 
-            value={selectedTimezone} 
-            onChange={(e) => setSelectedTimezone(e.target.value)}
-            className="border rounded p-1 text-sm"
-          >
-            {availableTimezones.map((tz) => (
-              <option key={tz} value={tz}>{tz}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-      <div className="grid grid-cols-6 gap-2 mb-4">
-        <div className="font-semibold text-gray-900">Time</div>
-        {days.map(day => (
-          <div key={day} className={`font-semibold ${day === currentDay ? 'bg-blue-100 rounded-t-lg p-1' : 'text-gray-800'}`}>
-            {day}
+    <div className="py-12">
+      <div className="p-6 max-w-4xl mx-auto bg-gray-800 border border-gray-700/20 rounded-xl shadow-md">
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="text-2xl font-bold">Weekly Work Schedule</h1>
+          <div className="flex items-center border rounded p-1.5 bg-gray-900 border-gray-700 ">
+            <select
+              value={selectedTimezone}
+              onChange={(e) => setSelectedTimezone(e.target.value)}
+              className="appearance-none focus:outline-none bg-transparent px-1"
+            >
+              {availableTimezones.map((tz) => (
+                <option key={tz} value={tz}>{tz}</option>
+              ))}
+            </select>
+            <ChevronDown className="inline-block w-4 h-4 ml-2 text-gray-500 pointer-events-none" />
           </div>
-        ))}
-        {hours.map(hour => (
-          <React.Fragment key={hour}>
-            <div className="text-sm text-gray-900">{`${hour}:00`}</div>
-            {days.map(day => (
-              <div key={`${day}-${hour}`} className={`border p-1 text-sm ${day === currentDay ? 'bg-blue-50' : ''}`}>
-                {schedule[day].start === `${hour}:00` && (
-                  <div className="bg-green-100 p-1 rounded text-black">
-                    <Clock className="inline-block w-4 h-4 mr-1" />
-                    Start
-                  </div>
-                )}
-                {schedule[day].lunch.startsWith(`${hour}:00`) && (
-                  <div className="bg-yellow-100 text-black p-1 rounded">Lunch</div>
-                )}
-                {schedule[day].activities[`${hour}:00`] && (
-                  <div className="bg-blue-100 text-black p-1 rounded">
-                    {schedule[day].activities[`${hour}:00`]}
-                  </div>
-                )}
-                {schedule[day].afk.includes(`${hour}:00`) && (
-                  <div className="bg-red-100 text-black p-1 rounded">AFK</div>
-                )}
-              </div>
-            ))}
-          </React.Fragment>
-        ))}
-      </div>
-      <div className="flex flex-wrap mt-4 text-black">
-        <ColorLegend color="bg-green-100" label="Start Time" />
-        <ColorLegend color="bg-yellow-100" label="Lunch Time" />
-        <ColorLegend color="bg-blue-100" label="Scheduled Activity" />
-        <ColorLegend color="bg-red-100" label="AFK (Away from Keyboard)" />
-        <ColorLegend color="bg-blue-50" label="Current Day" />
+        </div>
+        <div className="grid grid-cols-6 gap-2 mb-4">
+          <div className="font-semibold">Time</div>
+          {days.map(day => (
+            <div key={day} className={`font-semibold ${day === currentDay ? 'bg-blue-100 rounded-t-lg p-1' : ''}`}>
+              {day}
+            </div>
+          ))}
+          {hours.map(hour => (
+            <React.Fragment key={hour}>
+              <div className="text-sm">{`${hour}:00`}</div>
+              {days.map(day => (
+                <div key={`${day}-${hour}`} className={`border border-gray-700 rounded p-1 text-sm ${day === currentDay ? 'bg-blue-50' : ''}`}>
+                  {schedule[day].start === `${hour}:00` && (
+                    <div className="bg-green-100 p-1 rounded text-black">
+                      <Clock className="inline-block w-4 h-4 mr-1" />
+                      Start
+                    </div>
+                  )}
+                  {schedule[day].lunch.startsWith(`${hour}:00`) && (
+                    <div className="bg-yellow-100 text-black p-1 rounded">Lunch</div>
+                  )}
+                  {schedule[day].activities[`${hour}:00`] && (
+                    <div className="bg-blue-100 text-black p-1 rounded">
+                      {schedule[day].activities[`${hour}:00`]}
+                    </div>
+                  )}
+                  {schedule[day].afk.includes(`${hour}:00`) && (
+                    <div className="bg-red-100 text-black p-1 rounded">AFK</div>
+                  )}
+                </div>
+              ))}
+            </React.Fragment>
+          ))}
+        </div>
+        <div className="flex flex-wrap mt-4">
+          <ColorLegend color="bg-green-100" label="Start Time" />
+          <ColorLegend color="bg-yellow-100" label="Lunch Time" />
+          <ColorLegend color="bg-blue-100" label="Scheduled Activity" />
+          <ColorLegend color="bg-red-100" label="AFK (Away from Keyboard)" />
+          <ColorLegend color="bg-blue-50" label="Current Day" />
+        </div>
       </div>
     </div>
   );

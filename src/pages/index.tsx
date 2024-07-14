@@ -29,6 +29,11 @@ export default function Home() {
             label: 'Tag Selector',
             path: '/tag-selector',
             img: '/images/tag-selector.png',
+        },
+        {
+            label: 'Work Schedule',
+            path: '/timesheet',
+            img: '/images/timesheet.png',
         }
     ];
     return (
